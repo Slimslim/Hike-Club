@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import dbConnect from "./config/mongoose.config.js";
+import userRoutes from "./routes/user.routes.js";
 import hikeRoutes from "./routes/hike.routes.js";
 import cookieParser from "cookie-parser";
 
@@ -11,6 +12,7 @@ app.use(
     express.json(),
     cors({ origin: "http://localhost:5173", credentials: true })
 );
+app.use("/api/v1/", userRoutes);
 app.use("/api/v1/", hikeRoutes);
 
 dotenv.config();

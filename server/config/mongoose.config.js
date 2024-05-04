@@ -1,8 +1,8 @@
 import { connect } from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-//const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_URI = 'mongodb://localhost:27017'
+const MONGODB_URI = process.env.MONGODB_URI;
+// const MONGODB_URI = 'mongodb://localhost:27017'
 async function dbConnect() {
     try {
         // connection to the login_reg database
