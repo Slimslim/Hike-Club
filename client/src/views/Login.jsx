@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import { login, register } from "../services/LoginService";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-// import { userContext } from "../context/userContext";
+import { userContext } from "../context/userContext";
 
 import TopBanner from "../components/TopBanner";
 
 const Login = (props) => {
+    const { user, setUser, storeIdInLocalStorage } = useContext(userContext);
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -25,7 +26,7 @@ const Login = (props) => {
 
         register(regUserInfo)
             .then((res) => {
-                // setUser(res);
+                setUser(res);
                 console.log("Registered!!!");
                 navigate("/home");
             })
@@ -42,8 +43,8 @@ const Login = (props) => {
         login(userInfo)
             .then((res) => {
                 console.log("Login user data: ", res);
-                // setUser(res);
-                // storeIdInLocalStorage(res._id);
+                setUser(res);
+                storeIdInLocalStorage(res._id);
                 navigate("/home");
             })
             .catch((err) => {
