@@ -5,7 +5,7 @@ import { userContext } from "../context/userContext";
 import { getUserById } from "../services/LoginService";
 import TopBanner from "../components/TopBanner";
 
-const HikeUpdate = (props) => {
+const MyHikes = (props) => {
     // Variables to get logged in username
     const { user, setUser } = useContext(userContext);
     const id = window.localStorage.getItem("UUID");
@@ -26,10 +26,10 @@ const HikeUpdate = (props) => {
         <>
             <div className="full_screen_background">
                 <TopBanner loggedUser={user.username} />
-                <h1> HikeUpdate Page</h1>
+                <h1> MyHikes Page</h1>
             </div>
         </>
     );
 };
 
-export default HikeUpdate;
+export default MyHikes;

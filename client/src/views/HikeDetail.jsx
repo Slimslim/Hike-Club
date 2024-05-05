@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+// imports for userContext
+import { userContext } from "../context/userContext";
+import { getUserById } from "../services/LoginService";
 import TopBanner from "../components/TopBanner";
 
 const HikeDetails = () => {
+    // Variables to get logged in username
+    const { user, setUser } = useContext(userContext);
+    const id = window.localStorage.getItem("UUID");
+
+    // Get user username information
+    useEffect(() => {
+        getUserById(id)
+            .then((res) => {
+                console.log(res);
+                setUser(res);
+            })
+            .catch((err) => {
+                setErrors(err);
+            });
+    }, []);
+
     return (
         <>
             <div className="full_screen_background">
-                <TopBanner />
+                <TopBanner loggedUser={user.username} />
                 <div className="container mt-5">
                     <h1 className="mb-4">Hike Details</h1>
                     <Link to="/">Go to Dev Page</Link>
