@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 // imports for userContext
 import { userContext } from "../context/userContext";
 import { getUserById } from "../services/LoginService";
+import { getAllHikes } from "../services/HikeService";
 
 const HomePage = () => {
     // Variables to get logged in username
     const { user, setUser } = useContext(userContext);
     const id = window.localStorage.getItem("UUID");
+    const [erros, setErrors] = useState({});
+
+    // useState for the hike list
+    const [hikeList, setHikeList] = useState({});
 
     // Get user username information
     useEffect(() => {
@@ -20,6 +25,15 @@ const HomePage = () => {
             })
             .catch((err) => {
                 setErrors(err);
+            });
+
+        getAllHikes()
+            .then((res) => {
+                console.log(res);
+                setHikeList(res);
+            })
+            .catch((err) => {
+                console.log(err);
             });
     }, []);
 
