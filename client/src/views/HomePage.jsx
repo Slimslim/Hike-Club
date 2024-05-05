@@ -13,14 +13,14 @@ const HomePage = () => {
 
     // Get user username information
     useEffect(() => {
-        // getUserById(id)
-        //     .then((res) => {
-        //         console.log(res);
-        //         setUser(res);
-        //     })
-        //     .catch((err) => {
-        //         setErrors(err);
-        //     });
+        getUserById(id)
+            .then((res) => {
+                console.log(res);
+                setUser(res);
+            })
+            .catch((err) => {
+                setErrors(err);
+            });
     }, []);
 
     return (
