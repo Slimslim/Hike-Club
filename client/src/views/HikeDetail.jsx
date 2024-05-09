@@ -1,61 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+
+// imports for userContext
+import { userContext } from "../context/userContext";
+import { getUserById } from "../services/LoginService";
 import TopBanner from "../components/TopBanner";
 
 const HikeDetails = () => {
-    const [hike, setHike] = useState({});
-    const { id } = useParams();
-    const navigate = useNavigate();
+    // Variables to get logged in username
+    const { user, setUser } = useContext(userContext);
+    const id = window.localStorage.getItem("UUID");
 
+    // Get user username information
     useEffect(() => {
-        axios.get(`http://localhost:9999/api/v1/${id}`)
+        getUserById(id)
             .then((res) => {
-                setHike(res.data);
+                console.log(res);
+                setUser(res);
             })
             .catch((err) => {
-                console.log(err);
+                setErrors(err);
             });
-    }, [id]);
+    }, []);
 
     return (
-        <div className="full_screen_background">
-            <TopBanner />
-            <div className="container mt-5">
-                <div className="card p-4 bg-light bg-opacity-50">
-                <h1 className="headersLabels">{hike.hike_name}</h1>
+        <>
+            <div className="full_screen_background">
+                <TopBanner loggedUser={user.username} />
+                <div className="container mt-5">
+                    <h1 className="mb-4">Hike Details</h1>
+                    <Link to="/">Go to Dev Page</Link>
                     <table className="table table-bordered">
-                        
-                        <thead className="thead-dark">
+                        <thead>
                             <tr>
-
-                                <th>Hike Name</th>
-                                <th>Location</th>
-                                <th>Distance</th>
-                                <th>Difficulty</th>
-                                <th>Amenities</th>
-                                <th>Rating</th>
-                                <th>Description</th>
-                                <th>Actions</th>
+                                <th scope="col">Hike Name</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Difficulty</th>
+                                <th scope="col">Facilities</th>
+                                <th scope="col">Rating</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-
-                                <td>{hike.hike_name}</td>
-                                <td>{hike.location}</td>
-                                <td>{hike.distance}</td>
-                                <td>{hike.difficulty}</td>
-                                <td>{Array.isArray(hike.amenities) ? hike.amenities.join(', ') : hike.amenities}</td>
-                                <td>{hike.rating}</td>
-                                <td>{hike.description}</td>
-                                <td><Link to={`/updatehike/${hike._id}`} className="btn btn-warning ms-2">Update</Link></td>
+                                <td>Example Hike</td>
+                                <td>Example Location</td>
+                                <td>10 miles</td>
+                                <td>Medium</td>
+                                <td>Restrooms, Picnic Area</td>
+                                <td>4.5</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

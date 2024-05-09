@@ -1,15 +1,17 @@
-import { connect } from 'mongoose';
-import dotenv from 'dotenv';
-
+import { connect } from "mongoose";
+import dotenv from "dotenv";
 dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI;
-
+// const MONGODB_URI = 'mongodb://localhost:27017'
 async function dbConnect() {
     try {
+        // connection to the login_reg database
         await connect(MONGODB_URI, {
-            dbName: 'HikeCreateDB',
+            dbName: "HikeClub_db",
         });
-        console.log("Pinged your deployment (CreateHikeOnly) successfully; connected to MongoDB!");
+        console.log(
+            "Pinged your deployment. You successfully connected to HikerClub DB!"
+        );
     } catch (error) {
         console.log(error);
         throw error;
