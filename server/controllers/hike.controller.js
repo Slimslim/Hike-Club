@@ -1,4 +1,4 @@
-import Hike from '../models/hike.model.js';
+import Hike from '../model/hike.model.js';
 
 const list_hikes = async (req, res) => {
     await Hike.find({}, null)
@@ -48,4 +48,4 @@ export {
     add_hike,
     update_hike,
     delete_hike
-}
+};

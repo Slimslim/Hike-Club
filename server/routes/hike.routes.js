@@ -1,19 +1,25 @@
 import { Router } from "express";
-import * as userConroller from "../controllers/user.controller.js";
-import * as HikeController from "../controllers/hike.controller.js";
-import authenticate from "jsonwebtoken";
+import * as HikeController from "../controller/hike.controller.js";
+
 
 const router = Router();
 
-router.post("/register", userConroller.register);
-router.post("/login", userConroller.login);
-router.post("/logout", userConroller.logout);
-router.get("/get_user_info_by_id/:id", userConroller.getLoggedInUserById);
 
-router.get("/hike", HikeController.list_hikes);
-router.get("/hike/:id", HikeController.list_one_hike);
-router.post("/hike/add_hike", HikeController.add_hike);
-router.put("/hike/:id", HikeController.update_hike);
-router.delete("/hike/:id", HikeController.delete_hike);
+
+// CREATE HIKE
+router.route('/')
+    .post(HikeController.add_hike)
+
+// GET ALL HIKES
+router.route('/')
+    .get(HikeController.list_hikes)
+
+// GET ONE HIKE
+router.route('/:id')
+    .get(HikeController.list_one_hike)
+    .put(HikeController.update_hike)
+    .delete(HikeController.delete_hike)
+
+
 
 export default router;
