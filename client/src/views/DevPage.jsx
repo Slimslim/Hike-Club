@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const DevPage = (props) => {
     return (
@@ -11,9 +11,6 @@ const DevPage = (props) => {
             <h1></h1>
             <Link to={"/hike/:id"}>Hike Detail Page</Link>
             <h1></h1>
-            <Link to={"/updatehike/:id"}>Update Hike Page</Link> {/* Add this line */}
-            <h1></h1>
-            <Link to={"/createhike"}>Create Hike Page</Link>
         </>
     );
 };

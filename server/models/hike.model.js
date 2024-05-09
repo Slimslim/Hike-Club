@@ -1,53 +1,59 @@
-import mongoose from 'mongoose';
+import { model, Schema } from "mongoose";
 
-const hikeSchema = new mongoose.Schema(
+const HikeSchema = new Schema(
     {
         hike_name: {
             type: String,
-            required: [true, 'Hike name is required'],
-            minlength: [3, 'Hike name must be at least 3 characters long'],
-            maxlength: [255, 'Hike name cannot exceed 255 characters'],
+            required: [true, "The name of the Hike is required."],
         },
         location: {
             type: String,
-            required: [true, 'Location is required'],
-            minlength: [3, 'Location must be at least 3 characters long'],
-            maxlength: [255, 'Location cannot exceed 255 characters'],
+            required: [true, "The location of the Hike is required."],
         },
         distance: {
             type: Number,
-            required: [true, 'Distance is required'],
-            min: [0, 'Distance cannot be negative'],
+            required: [true, "The distance of the hike is required."],
         },
         difficulty: {
             type: String,
-            enum: ['very easy', 'easy', 'moderate', 'difficult', 'very difficult'],
-            default: 'moderate',
+            enum: ["very_easy", "easy", "medium", "hard", "very_hard"],
+            required: [true, "The difficulty is required."],
         },
         amenities: {
-            type: [String], 
-            enum: ["bathroom", "water", "parking", "dog-friendly", "picnic areas", "scenic viewpoints"],
-            required: [true, 'Please select at least one amenity'],
-            default: [] 
+            type: [String],
+            validate: {
+                validator: function (value) {
+                    // Only allowed these amenities listed
+                    return value.every((amenity) =>
+                        [
+                            "bathroom",
+                            "parking",
+                            "water",
+                            "dog-friendly",
+                            "picnic areas",
+                            "scenic viewpoints",
+                        ].includes(amenity)
+                    );
+                },
+                message: (props) =>
+                    `${props.value} is not a valid amenity name`,
+            },
         },
-        
-        rating: {
+        ratings: {
             type: Number,
-            min: [0, 'Rating must be between 0 and 5'],
-            max: [5, 'Rating must be between 0 and 5'],
+            required: [true, "The ratings number is required."],
         },
         description: {
             type: String,
-            maxlength: [1000, 'Description cannot exceed 1000 characters'],
         },
-        date: {
-            type: Date,
-            default: Date.now
-        }
+        createdBy: {
+            type: String,
+            required: [true, "CreatedBy field is required."],
+        },
     },
     { timestamps: true }
 );
 
-const Hike = mongoose.model('Hike', hikeSchema);
+const Hike = model("Hike", HikeSchema);
 
 export default Hike;
