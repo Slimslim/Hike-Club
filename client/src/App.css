@@ -1,83 +1,72 @@
 * {
-    margin: 0;
+  margin: 0;
 }
-
 .full_screen_background {
-    height: 100vh;
-    background-image: url(../src/assets/TheHikeClub-BGImage.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100vw;
+  background-image: url(../src/assets/TheHikeClub-BGImage.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-
 .banner {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
-
 .logo_text {
-    margin: 0px;
-    padding: 0px 10px;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
-    text-align: center;
-    color: beige;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  text-align: center;
+  color: beige;
 }
 
 .logo_line {
-    border-bottom: 2px solid beige;
+  border-bottom: 2px solid beige;
 }
 
 /* Navbar styling */
 .banner {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #435351;
+  margin-bottom: 20px; /* Adjust the value as needed */
 }
 
 .left_nav,
 .right_nav {
-    display: flex;
-    color: beige;
-    gap: 10px;
+  display: flex;
+  color: beige;
 }
 
 .register_container,
 .login_container {
-    /* background-color: rgba(255, 255, 255, 0.5); */
-    padding: 20px;
-    display: flex;
-    margin: auto;
-    /* border: 2px white solid;
-    border-radius: 10px; */
-    width: fit-content;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  display: flex;
+  margin: auto;
+  border: 2px white solid;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+#form {
 }
 
 .form_container {
-    width: fit-content;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    /* gap: 40px; */
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 2px white solid;
-    border-radius: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-/* login page styles */
-
-.nav {
-    color: brown;
-    align-content: center;
-    border: none;
+.errors{
+  color: red;
+  font-size: medium;
+  font-family: initial;
 }
 
-.tab_Stlye {
-    border: 5px solid black;
-}
-
-.Tab {
-    background-color: aqua;
+.headersLabels{
+  text-align: center;
 }
