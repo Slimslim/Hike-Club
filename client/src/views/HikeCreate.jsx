@@ -101,7 +101,7 @@ const HikeCreate = (props) => {
     };
 
     const handleSubmit = async (event) => {
-        setHike({ ...hike, createBy: user.username });
+        setHike({ ...hike, createdBy: user.username });
         event.preventDefault();
         if (validateForm()) {
             try {

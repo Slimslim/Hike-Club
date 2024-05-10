@@ -41,7 +41,7 @@ const HikeUpdate = (props) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:9999/api/v1/${id}`)
+            .get(`http://localhost:8000/api/v1/hike/${id}`)
             .then((res) => {
                 setHike(res.data);
             })
@@ -111,7 +111,10 @@ const HikeUpdate = (props) => {
         event.preventDefault();
         if (validateForm()) {
             try {
-                await axios.put(`http://localhost:9999/api/v1/${id}`, hike);
+                await axios.put(
+                    `http://localhost:8000/api/v1/hike/${id}`,
+                    hike
+                );
                 navigate("/home");
             } catch (error) {
                 console.log(error);

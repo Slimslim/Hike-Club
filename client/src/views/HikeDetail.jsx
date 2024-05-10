@@ -29,7 +29,6 @@ const HikeDetails = () => {
                 <TopBanner loggedUser={user.username} />
                 <div className="container mt-5">
                     <h1 className="mb-4">Hike Details</h1>
-                    <Link to="/">Go to Dev Page</Link>
                     <table className="table table-bordered">
                         <thead>
                             <tr>

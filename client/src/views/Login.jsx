@@ -78,7 +78,7 @@ const Login = (props) => {
                                                 name="username"
                                                 onChange={(e) =>
                                                     setRegUserInfo({
-                                                        ...userInfo,
+                                                        ...regUserInfo,
                                                         username:
                                                             e.target.value,
                                                     })
@@ -104,7 +104,7 @@ const Login = (props) => {
                                                 name="email"
                                                 onChange={(e) =>
                                                     setRegUserInfo({
-                                                        ...userInfo,
+                                                        ...regUserInfo,
                                                         email: e.target.value,
                                                     })
                                                 }
@@ -129,7 +129,7 @@ const Login = (props) => {
                                                 name="password"
                                                 onChange={(e) =>
                                                     setRegUserInfo({
-                                                        ...userInfo,
+                                                        ...regUserInfo,
                                                         password:
                                                             e.target.value,
                                                     })
@@ -155,7 +155,7 @@ const Login = (props) => {
                                                 name="password"
                                                 onChange={(e) =>
                                                     setRegUserInfo({
-                                                        ...userInfo,
+                                                        ...regUserInfo,
                                                         confirmPassword:
                                                             e.target.value,
                                                     })

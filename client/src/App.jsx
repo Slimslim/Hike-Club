@@ -12,8 +12,8 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path="/" element={<DevPage />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Login />} />
+                {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/hike/:id" element={<HikeDetail />} />
                 <Route path="/updatehike/:id" element={<HikeUpdate />} />
