@@ -3,9 +3,9 @@
 }
 
 .full_screen_background {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(../src/assets/TheHikeClub-BGImage.png);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 }
 

@@ -95,7 +95,7 @@ const HomePage = () => {
                                                 "..."}
                                         </td>
 
-                                        {user.username === hike.createBy ? (
+                                        {user.username === hike.createdBy ? (
                                             <td>
                                                 <Button
                                                     onClick={() =>

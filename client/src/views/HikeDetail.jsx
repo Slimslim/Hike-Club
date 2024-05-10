@@ -6,11 +6,11 @@ import TopBanner from "../components/TopBanner";
 const HikeDetails = () => {
     const [hike, setHike] = useState({});
     const { id } = useParams();
-    
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/v1/${id}`)
+        axios
+            .get(`http://localhost:8000/api/v1/hike/${id}`)
             .then((res) => {
                 setHike(res.data);
             })
@@ -24,7 +24,7 @@ const HikeDetails = () => {
             <TopBanner />
             <div className="container mt-5">
                 <div className="card p-4 bg-light bg-opacity-50">
-                <h1 className="headersLabels">{hike.hike_name}</h1>
+                  <h1 className="headersLabels">{hike.hike_name}</h1>
                     <table className="table table-bordered">
                         
                         <thead className="thead-dark">
@@ -46,9 +46,21 @@ const HikeDetails = () => {
                                 <td>{hike.location}</td>
                                 <td>{hike.distance}</td>
                                 <td>{hike.difficulty}</td>
-                                <td>{Array.isArray(hike.amenities) ? hike.amenities.join(', ') : hike.amenities}</td>
+                                <td>
+                                    {Array.isArray(hike.amenities)
+                                        ? hike.amenities.join(", ")
+                                        : hike.amenities}
+                                </td>
                                 <td>{hike.description}</td>
-                                <td><Link to={`/updatehike/${hike._id}`} className="btn btn-warning ms-2">Update</Link></td>
+                                <td>
+                                    <Link
+                                        to={`/updatehike/${hike._id}`}
+                                        className="btn btn-warning ms-2"
+                                    >
+                                        Update
+                                    </Link>
+                                </td>
+
                             </tr>
                         </tbody>
                     </table>

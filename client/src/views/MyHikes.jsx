@@ -16,7 +16,7 @@ const MyHikes = (props) => {
     const { user, setUser } = useContext(userContext);
     const userId = window.localStorage.getItem("UUID");
 
-    const [hikes, setHikes] = useState({});
+    const [hikes, setHikes] = useState([]);
     const navigate = useNavigate();
 
     // Get user username information
@@ -61,8 +61,8 @@ const MyHikes = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {hikes.map((hike) =>
-                                    hike.createBy === user.username ? (
+                                {hikes.map((hike) =>
+                                    hike.createdBy === user.username ? (
                                         <tr key={hike._id}>
                                             <td>
                                                 <Link to={`/hike/${hike._id}`}>
@@ -83,7 +83,8 @@ const MyHikes = (props) => {
                                                     "..."}
                                             </td>
 
-                                            {user.username === hike.createBy ? (
+                                            {user.username ===
+                                            hike.createdBy ? (
                                                 <td>
                                                     <Button
                                                         onClick={() =>
@@ -107,7 +108,7 @@ const MyHikes = (props) => {
                                             )}
                                         </tr>
                                     ) : null
-                                )} */}
+                                )}
                             </tbody>
                         </Table>
                     </div>
