@@ -6,7 +6,6 @@ import TopBanner from "../components/TopBanner";
 const HikeDetails = () => {
     const [hike, setHike] = useState({});
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,10 +24,12 @@ const HikeDetails = () => {
             <TopBanner />
             <div className="container mt-5">
                 <div className="card p-4 bg-light bg-opacity-50">
-                    <h1 className="headersLabels">{hike.hike_name}</h1>
+                  <h1 className="headersLabels">{hike.hike_name}</h1>
                     <table className="table table-bordered">
+                        
                         <thead className="thead-dark">
                             <tr>
+
                                 <th>Hike Name</th>
                                 <th>Location</th>
                                 <th>Distance</th>
@@ -40,6 +41,7 @@ const HikeDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
+
                                 <td>{hike.hike_name}</td>
                                 <td>{hike.location}</td>
                                 <td>{hike.distance}</td>
@@ -58,6 +60,7 @@ const HikeDetails = () => {
                                         Update
                                     </Link>
                                 </td>
+
                             </tr>
                         </tbody>
                     </table>
